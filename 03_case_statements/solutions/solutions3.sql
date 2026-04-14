@@ -64,6 +64,7 @@ Enrolled_students INT
 );
 
 CREATE TABLE Payments (
+Payment_id INT,
 Amount INT,
 Payment_method VARCHAR(50)
 );
@@ -149,3 +150,153 @@ VALUES
 (3, 150.00, 'Card'),
 (4, 75.00, 'Paypal'),
 (5, 300.00, 'Cash');
+
+-- Retrieving all rows and  columns for all tables created
+
+SELECT *
+FROM Products;
+
+SELECT *
+FROM Orders;
+
+SELECT *
+FROM Employees;
+
+SELECT *
+FROM Students;
+
+SELECT *
+FROM Deliveries;
+
+SELECT *
+FROM Tickets;
+
+SELECT *
+FROM Attendance;
+
+SELECT *
+FROM Products_inventory;
+
+SELECT *
+FROM Classes;
+
+SELECT *
+FROM Payments;
+
+/* Question 1 to Question 10 has been queried using the above created tables in their order */
+
+-- Question 1
+-- Classify each product by price
+SELECT Product_name,
+       Price,
+       CASE 
+           WHEN Price < 100 THEN 'Budget'
+           WHEN Price BETWEEN 100 AND 1000 THEN 'Mid-Range'
+           WHEN Price > 1000 THEN 'Expensive'
+      END AS Price_category
+FROM Products;
+
+-- Question 2
+-- Label each order
+SELECT Customer_name,
+       Amount,
+       CASE
+           WHEN Amount < 500 THEN 'Low Value'
+           WHEN Amount BETWEEN 500 AND 999.99 THEN 'Medium Value'
+           WHEN Amount >= 1000 THEN 'High Value'
+	  END AS Order_value_category
+FROM Orders;
+
+-- Question 3
+-- Categorize employee position
+SELECT Emp_name,
+       Department,
+	   Salary,
+       CASE
+           WHEN Department = 'IT' AND Salary > 80000 THEN 'Senior IT'
+           WHEN Department = 'HR' AND Salary > 55000 THEN 'Experienced HR'
+	   ELSE 'Staff'
+       END AS Employee_Position
+FROM Employees;
+
+-- Question 4
+-- Assign a letter grade
+SELECT Student_name,
+       Score,
+       CASE
+           WHEN Score >= 90 THEN 'A'
+           WHEN Score BETWEEN 80 AND 89 THEN 'B'
+           WHEN Score BETWEEN 70 AND 79 THEN 'C'
+           WHEN Score BETWEEN 60 AND 69 THEN 'D'
+	   ELSE 'F'
+	   END AS Grade
+FROM Students;
+
+-- Question 5
+-- Label delivery performance
+SELECT Delivery_id,
+       Delivery_time_minutes,
+       CASE
+           WHEN Delivery_time_minutes <= 30 THEN 'Fast'
+		   WHEN Delivery_time_minutes BETWEEN 31 AND 60 THEN 'On Time'
+	   ELSE 'Late'
+       END AS Performance
+FROM Deliveries;
+
+-- Question 6
+-- Convert Priority to labels
+SELECT Issue_type,
+       Priority,
+       CASE
+           WHEN Priority = 1 THEN 'Low'
+           WHEN Priority = 2 THEN 'Medium'
+           WHEN Priority = 3 THEN 'High'
+	   END AS Priority_label
+FROM Tickets;
+
+-- Question 7
+-- Calculate attendance % and classify
+SELECT Student_id,
+       Days_present,
+       Total_days,
+       (Days_present * 100/ Total_days) AS Attendance_Percentage,
+       CASE
+           WHEN (Days_present * 100/ Total_days) >= 90 THEN 'Excellent'
+           WHEN (Days_present * 100/ Total_days) BETWEEN 75 AND 89 THEN 'Good'
+	   ELSE 'Needs Improvement'
+       END AS Attendance_Status
+FROM Attendance;
+
+-- Question 8
+-- Label stock status
+SELECT Product_id,
+       Stock_qty,
+       CASE
+           WHEN Stock_qty = 0 THEN 'Out of stock'
+           WHEN Stock_qty BETWEEN 1 AND 5 THEN 'Low stock'
+	   ELSE 'In stock'
+	   END AS Stock_status
+FROM Products_inventory;
+
+-- Question 9
+-- Classify by size
+SELECT `Subject`,
+        Enrolled_students,
+        CASE
+            WHEN Enrolled_students < 10 THEN 'Small'
+            WHEN Enrolled_students BETWEEN 10 AND 24 THEN 'Medium'
+		ELSE 'Large'
+        END AS Class_size_category
+FROM Classes;
+
+-- Question 10
+-- Apply discount flag
+SELECT Payment_id,
+       Payment_method,
+	   Amount,
+       CASE
+           WHEN Payment_method = 'Cash' AND Amount >= 200 THEN 'Eligible for discount'
+		ELSE 'Not eligible'
+        END AS Discount_Eligibility
+FROM Payments;
+           
