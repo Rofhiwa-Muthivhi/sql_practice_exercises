@@ -10,7 +10,7 @@ Start_month INT,
 Start_day INT
 );
 
--- Inserting values into the Courses table
+-- Inserting values into the Memberships table
 INSERT INTO Memberships (Member_id, Start_year, Start_month, Start_day)
 VALUES
 (1, 2023, 5, 10),
