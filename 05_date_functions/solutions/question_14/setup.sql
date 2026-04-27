@@ -4,7 +4,7 @@ USE Bright_Date_Functions;
 
 
 -- Creating  Table
--- Question 13
+-- Question 14
 CREATE TABLE Assignments (
 Assign_id INT,
 Asigned_on DATE
