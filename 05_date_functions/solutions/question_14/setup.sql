@@ -7,12 +7,11 @@ USE Bright_Date_Functions;
 -- Question 14
 CREATE TABLE Assignments (
 Assign_id INT,
-Asigned_on DATE
+Asigned_on VARCHAR(20)
 );
 
-
--- Inserting values into the Assignments  table
-INSERT INTO Assignments (Assign_id, Asigned_on) 
+INSERT INTO Assignments (Assign_id, Asigned_on)
 VALUES
 (1, '2025-03-01'),
 (2, '2025-03-05');
+
