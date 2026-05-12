@@ -3,15 +3,15 @@ USE Bright_Null_Functions;
 
 -- Creating  Table
 -- Question 11
-CREATE TABLE Bank_Accounts (
-Account_id INT,
-Account_type VARCHAR(50),
-Balance INT
+CREATE TABLE Inventory  (
+ Item_id INT,
+ Item_name VARCHAR(50),
+ Quantity INT
 );
 
--- Inserting values into the Bank_Accounts table
-INSERT INTO Bank_Accounts (Account_id, Account_type, Balance)
+-- Inserting values into the Inventory table
+INSERT INTO Inventory (Item_id, Item_name, Quantity)
 VALUES
-(1, 'Savings', NULL),
-(2, 'Current', 5000),
-(3, NULL, 2000);
+(1, 'Pen', NULL),
+(2, 'Notebook', 150),
+(3, 'Eraser', NULL);
