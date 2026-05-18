@@ -103,7 +103,7 @@ FROM Salaries;
 SELECT *
 FROM Projects;
 
--- Question 1 - 5 will be queried fro the Students Table
+-- Question 1 - 5 will be queried from the Students Table
 -- Question 1
 -- List all distict departments in the student table
 SELECT DISTINCT Department
